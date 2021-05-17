@@ -1,0 +1,19 @@
+version: "3.9"
+   
+services:
+  quarkus-hibernate-orm-oracle:
+    image: quarkus-hibernate-orm-oracle
+    ports:
+      - 8080:8080
+    networks:
+      - nt
+    command: sh -c "/work/application -Dquarkus.http.host=0.0.0.0"
+    environment:
+      - quarkus.datasource.username=<USERNAME>
+      - quarkus.datasource.password=<PASSWORD>
+      - quarkus.datasource.jdbc.url=<CONNECTION URL>
+      - quarkus.hibernate-orm.database.default-schema=<SCHEMA>
+
+networks:
+  nt:
+    driver: bridge
